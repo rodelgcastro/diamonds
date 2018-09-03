@@ -1,0 +1,19 @@
+<div class="logo">
+    <!-- <a href="#" class="simple-text">
+        <div class="logo-img">
+            <img src="/assets/images/sidenav-logo.png" width="30" height="30" />
+        </div>
+    </a> -->
+    <div class="simple-text">
+        <p>COOPERATIVE</p>
+    </div>
+</div>
+<div class="sidebar-wrapper">
+    <mat-sidenav #appDrawer 
+        mode="mobileQuery.matches ? over : side" 
+        opened="mobileQuery.matches ? false : true">
+        <mat-nav-list>
+            <app-nav-item *ngFor="let item of routeItems" [item]="item"></app-nav-item>
+        </mat-nav-list>
+    </mat-sidenav>
+</div>

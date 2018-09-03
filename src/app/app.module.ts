@@ -1,18 +1,62 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-module/app-routing.module';
 import { AppComponent } from './app.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './app-module/app-material.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { LoginLayoutComponent } from './layout/login-layout.component';
+import { LoginComponent } from './login/login.component';
+import { HomeLayoutComponent } from './layout/home-layout.component';
+import {
+  SidenavComponent,
+  NavItemComponent,
+  TopnavComponent
+} from './components';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {
+  MembersComponent,
+  CyclesComponent,
+  ContributionsComponent
+} from './cooperative';
+import { LendingComponent } from './business';
+
+import { ProfileComponent } from './profile/profile.component';
+
+import { RouteService } from './core-services/route-item.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginLayoutComponent,
+    LoginComponent,
+    HomeLayoutComponent,
+    SidenavComponent,
+    NavItemComponent,
+    DashboardComponent,
+    TopnavComponent,
+    ProfileComponent,
+    MembersComponent,
+    CyclesComponent,
+    ContributionsComponent,
+    LendingComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    NgbModule.forRoot(),
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [RouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
