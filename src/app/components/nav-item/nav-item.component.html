@@ -11,10 +11,7 @@
     </mat-icon>
   </span>
 </a>
-<!-- <div [@slide]="expanded ? 'in' : 'out'" 
-  (@slide.start)="logAnimation($event)"> -->
-  <ng-container *ngIf="expanded">
-    <app-nav-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
-    </app-nav-item>
-  </ng-container>
-<!-- </div> -->
+<ng-container *ngIf="expanded">
+  <app-nav-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
+  </app-nav-item>
+</ng-container>

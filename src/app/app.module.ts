@@ -27,8 +27,7 @@ import {
 import { LendingComponent } from './business';
 
 import { ProfileComponent } from './profile/profile.component';
-
-import { RouteService } from './core-services/route-item.service';
+import { NavigationService } from './core-services/navigation.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +55,7 @@ import { RouteService } from './core-services/route-item.service';
     NgbModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [RouteService],
+  providers: [NavigationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

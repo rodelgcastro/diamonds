@@ -1,11 +1,15 @@
 <div class="wrapper">
-    <mat-sidenav-container>
-        <div class="sidebar">
+    <mat-sidenav-container fxFlex>
+        <mat-sidenav #sidenav
+            [mode]="mobileQuery.matches ? 'push' : 'side'" 
+            [opened]="!mobileQuery.matches"
+            [position]="mobileQuery.matches ? 'end' : 'start'"
+            [fixedInViewport]="mobileQuery.matches">
             <app-sidenav></app-sidenav>
-        </div>
-        <div class="main-panel">
+        </mat-sidenav>
+        <mat-sidenav-content #content>
             <app-topnav></app-topnav>
             <router-outlet></router-outlet>
-        </div>
+        </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

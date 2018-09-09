@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { NavigationService } from '../../core-services/navigation.service';
 
 @Component({
   selector: 'app-topnav',
@@ -7,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopnavComponent implements OnInit {
 
-  constructor() { }
+  heading: string;
+  mobileQuery: MediaQueryList;  
+
+  private _mobileQueryListener: () => void;
+
+  constructor(
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher,
+    public navigationService: NavigationService
+  ) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.heading = navigationService.header;
+  }
 
   ngOnInit() {
   }

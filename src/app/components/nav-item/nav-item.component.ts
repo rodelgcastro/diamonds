@@ -1,8 +1,8 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouteItem } from '../../core-items/route-item';
-import { RouteService } from '../../core-services/route-item.service';
 import { NavItemAnimation } from './nav-item.animations';
+import { NavigationService } from '../../core-services/navigation.service';
 
 @Component({
   selector: 'app-nav-item',
@@ -18,8 +18,10 @@ export class NavItemComponent {
 
   @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
 
-  constructor(public routeService: RouteService,
-    public router: Router) {
+  constructor(
+    public navigationService: NavigationService,
+    public router: Router
+  ) {
     if (this.depth === undefined) {
       this.depth = 0;
     }
@@ -28,7 +30,7 @@ export class NavItemComponent {
   onItemSelected(item: RouteItem) {
     if (!item.children || !item.children.length) {
       this.router.navigate([item.path]);
-      // this.routeService.closeNav();
+      this.navigationService.header = item.title.toUpperCase();
     }
     if (item.children && item.children.length) {
       this.expanded = !this.expanded;

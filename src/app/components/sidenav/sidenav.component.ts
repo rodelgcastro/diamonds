@@ -1,11 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { VERSION } from '@angular/material';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
-import { Observable, BehaviorSubject } from 'rxjs';
 // import { AuthService } from '../auth/auth.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { RouteItem } from '../../core-items/route-item';
-import { RouteService } from '../../core-services/route-item.service';
 import { AuthService } from '../../auth/auth.service';
 
 export const ROUTES: RouteItem[] = [
@@ -38,8 +35,7 @@ export const ROUTES: RouteItem[] = [
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  @ViewChild('appDrawer') appDrawer: ElementRef;
-  // version = VERSION;
+  //
   routeItems: RouteItem[];
   mobileQuery: MediaQueryList;
 
@@ -48,7 +44,6 @@ export class SidenavComponent implements OnInit {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    private routeService: RouteService,
     private authService: AuthService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -59,32 +54,5 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
     this.routeItems = ROUTES.filter(item => item);
   }
-
-  ngAfterViewInit() {
-    this.routeService.appDrawer = this.appDrawer;
-  }
-
-  // mobileQuery: MediaQueryList;
-  // items: any[];
-
-  // private _mobileQueryListener: () => void;
-
-  // constructor(
-  //   private authService: AuthService,
-  //   changeDetectorRef: ChangeDetectorRef,
-  //   media: MediaMatcher
-  // ) {
-  //   this.mobileQuery = media.matchMedia('(max-width: 600px)');
-  //   this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-  //   this.mobileQuery.addListener(this._mobileQueryListener);
-  // }
-
-  // ngOnInit() {
-  //   this.items = ROUTES.filter(item => item);
-  // }
-
-  // onLogout() {
-  //   this.authService.logout();
-  // }
 
 }
