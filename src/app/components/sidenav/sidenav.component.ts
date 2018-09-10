@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, HostBinding } from '@angular/core';
 
 // import { AuthService } from '../auth/auth.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { RouteItem } from '../../core-items/route-item';
 import { AuthService } from '../../auth/auth.service';
+import { NavigationService } from '../../core-services/navigation.service';
 
 export const ROUTES: RouteItem[] = [
   {

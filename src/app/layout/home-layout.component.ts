@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { NavigationService } from '../core-services/navigation.service';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-home-layout',
@@ -9,7 +10,7 @@ import { NavigationService } from '../core-services/navigation.service';
 })
 export class HomeLayoutComponent implements OnInit {
   //
-  @ViewChild('sidenav') sidenav: ElementRef;
+  @ViewChild('sidenav') sidenav: MatSidenav;
   @ViewChild('content') content: ElementRef;
 
   mobileQuery: MediaQueryList;
@@ -30,5 +31,6 @@ export class HomeLayoutComponent implements OnInit {
 
   ngAfterViewInit() {
     this.navigationService.sidenav = this.sidenav;
+    this.navigationService.isOpen = this.sidenav.opened;
   }
 }

@@ -1,14 +1,19 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span>{{heading}}</span>
-    <span fxFlex *ngIf="!mobileQuery.matches">
-      <span fxFlex></span>
-      <mat-icon>notifications</mat-icon>
-      <mat-icon>person</mat-icon>
-    </span>
-    <span fxFlex *ngIf="mobileQuery.matches">
-      <span fxFlex></span>
-      <mat-icon (click)="navigationService.toggle()">menu</mat-icon>
-    </span>
+    <span #header>COOPERATIVE</span>
+    <span fxFlex></span>
+    <ng-container *ngIf="!mobileQuery.matches">
+      <button mat-icon-button (click)="navigationService.toggle()">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button (click)="navigationService.toggle()">
+        <mat-icon>person</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="mobileQuery.matches">
+      <button mat-icon-button (click)="navigationService.toggle()" class="toggler-icon">
+        <mat-icon [@iconRotate]="navigationService.isOpen ? 'close': 'menu'">menu</mat-icon>
+      </button>
+    </ng-container>
   </mat-toolbar-row>
 </mat-toolbar>
